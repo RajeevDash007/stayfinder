@@ -1,6 +1,7 @@
 import Container from '../Container'
 import Logo from './Logo'
 import React from 'react'
+import Search from './Search'
 
 function Navbar() {
   return (
@@ -23,6 +24,7 @@ function Navbar() {
                 '
             >
                 <Logo />
+                <Search />
             </div>
         </Container>
 
