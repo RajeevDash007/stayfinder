@@ -63,13 +63,13 @@ function Search() {
                 <div className='hidden sm:block'>Add Guest</div>
                 <div
                     className='
-                        p-2
+                        p-1
                         bg-gradient-to-r from-purple-500 to-purple-700
                         rounded-full
                         text-white
                     '
                 >
-                    <BiSearch size={18} />
+                    <BiSearch size={15} />
 
                 </div>
             </div>
