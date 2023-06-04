@@ -12,6 +12,7 @@ import {
 
 import useRegisterModal from '@/app/hooks/useRegisterModal';
 import Modals from './Modals';
+import Heading from '../Heading';
 
 
 const RegisterModal = () => {
@@ -47,14 +48,24 @@ const RegisterModal = () => {
             })
     }   
 
+    const bodyContent = (
+        <div className='flex flex-col gap-4'>
+            <Heading 
+                title='Welcome to Stay Finder'
+                subtitle='Create an account!'
+            />
+        </div>
+    )
+
   return (
     <Modals
         disabled={isLoading}
         isOpen={registerModal.isOpen}
-        title="Register"
+        title="Sign Up"
         actionLabel='Continue'
         onClose={registerModal.onClose}
         onSubmit={handleSubmit(onSubmit)}
+        body={bodyContent}
     />
   )
 }
