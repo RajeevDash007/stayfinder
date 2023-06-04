@@ -13,6 +13,7 @@ import {
 import useRegisterModal from '@/app/hooks/useRegisterModal';
 import Modals from './Modals';
 import Heading from '../Heading';
+import Input from '../inputs/Input';
 
 
 const RegisterModal = () => {
@@ -53,6 +54,14 @@ const RegisterModal = () => {
             <Heading 
                 title='Welcome to Stay Finder'
                 subtitle='Create an account!'
+            />
+            <Input 
+                id="email"
+                label='Email'
+                disabled={isLoading}
+                register={register}
+                errors={errors}
+                required
             />
         </div>
     )
