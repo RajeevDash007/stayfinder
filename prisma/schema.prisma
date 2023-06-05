@@ -41,4 +41,6 @@ model Account{
   session_state String?
 
   user User @relation(feilds:[userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
 }
