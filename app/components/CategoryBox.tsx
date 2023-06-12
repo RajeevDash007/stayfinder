@@ -40,7 +40,7 @@ const CategoryBox:React.FC<CategoryBoxProps> = ({
         },{skipNull: true});
 
         router.push(url);
-    },[]);
+    },[label,params,router]);
   return (
     <div 
         onClick={handleClick}
