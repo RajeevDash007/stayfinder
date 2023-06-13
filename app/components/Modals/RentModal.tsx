@@ -2,6 +2,8 @@
 import React, { useMemo, useState } from 'react'
 import Modals from './Modals'
 import useRentModal from '@/app/hooks/useRentModal'
+import Heading from '../Heading';
+import { categories } from '../Navbar/Categories';
 
 enum STEPS {
   CATEGORY = 0,
@@ -30,14 +32,39 @@ const RentModal = () => {
         return 'Create';
       }
       return 'Next';
-    },[step])
+    },[step]);
 
     const secondaryActionLabel = useMemo(() => {
       if(step == STEPS.CATEGORY){
         return undefined;
       }
       return 'Back';
-    },[step])
+    },[step]);
+
+    let bodyContent = (
+      <div className='flex flex-col gap-8'>
+        <Heading 
+          title='How would you describe your place?'
+          subtitle='Select a specific category.'
+        />
+        <div
+          className='
+            grid
+            grid-cols-1
+            md:grid-cols-2
+            gap-3
+            max-h-[50vh]
+            overflow-y-auto
+          '
+        >
+          {categories.map((item)=>(
+              <div key={item.label} className='col-span-1'>
+                  {item.label}
+              </div>
+          ))}
+        </div>
+      </div>
+    )
 
   return (
     <div>
@@ -49,6 +76,7 @@ const RentModal = () => {
         secondaryActionLabel={secondaryActionLabel}
         secondaryAction={step == STEPS.CATEGORY ? undefined : onBack }
         title='SF Home'
+        body={bodyContent}
       />
     </div>
   )
