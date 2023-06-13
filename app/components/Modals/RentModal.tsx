@@ -1,5 +1,5 @@
 'use client';
-import React, { useState } from 'react'
+import React, { useMemo, useState } from 'react'
 import Modals from './Modals'
 import useRentModal from '@/app/hooks/useRentModal'
 
@@ -17,13 +17,37 @@ const RentModal = () => {
 
     const [step,setStep] = useState(STEPS.CATEGORY)
 
+    const onBack = () => {
+      setStep((value) =>  value - 1)
+    };
+
+    const onNext = () => {
+      setStep((value) => value + 1)
+    }
+
+    const actionLabel = useMemo(() =>{
+      if(step == STEPS.PRICE){
+        return 'Create';
+      }
+      return 'Next';
+    },[step])
+
+    const secondaryActionLabel = useMemo(() => {
+      if(step == STEPS.CATEGORY){
+        return undefined;
+      }
+      return 'Back';
+    },[step])
+
   return (
     <div>
       <Modals 
         isOpen={rentModal.isOpen}
         onClose={rentModal.onClose}
         onSubmit={rentModal.onClose}
-        actionLabel='Submit'
+        actionLabel={actionLabel}
+        secondaryActionLabel={secondaryActionLabel}
+        secondaryAction={step == STEPS.CATEGORY ? undefined : onBack }
         title='SF Home'
       />
     </div>
