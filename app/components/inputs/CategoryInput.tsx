@@ -25,8 +25,8 @@ const CategoryInput:React.FC<CategoryInputProps> = ({
             flex
             flex-col
             gap-3
-            hover: border-black
             transition
+            hover:border-black
             cursor-pointer
             ${selected ? 'border-black' : 'border-neutral-200'}
         `}
