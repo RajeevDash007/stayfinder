@@ -46,6 +46,7 @@ const RentModal = () => {
     });
 
     const category = watch('category');
+    const location = watch('location');
 
     const setCustomValue = (id: string, value: any) => {
       setValue(id, value, {
@@ -116,7 +117,8 @@ const RentModal = () => {
             />
 
             <CountrySelect 
-              
+              value={location}            
+              onChange={(value) => setCustomValue('location', value)}
             />
         </div>
       )
