@@ -25,3 +25,11 @@ html,body,:root{
 ::-webkit-scrollbar-thumb:hover {
   background: #555; /* Set the color of the scrollbar handle when hovered */
 }
+
+
+.leaflet-bottom,
+.leaflet-control,
+.leaflet-pane,
+.leaflet-top{
+  z-index: 0 !important;
+}
