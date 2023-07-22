@@ -3,7 +3,7 @@ import useCountries from '@/app/hooks/useCountries';
 import { SafeUser } from '@/app/types';
 import { Listing, Reservation } from '@prisma/client'
 import { useRouter } from 'next/navigation';
-import React, { useCallback } from 'react'
+import React, { useCallback, useMemo } from 'react'
 
 interface ListingCardProps{
     data: Listing;
@@ -36,7 +36,15 @@ const ListingCard:React.FC<ListingCardProps> = ({
             }
 
             onAction?.(actionId);
-        }, [onAction,actionId,disabled])
+        }, [onAction,actionId,disabled]);
+
+    const price = useMemo(()=>{
+        if(reservation){
+            return reservation.totalPrice;
+        }
+
+        return data.price;
+    },[reservation,data.price]);
   return (
     <div>
        Listing Card
