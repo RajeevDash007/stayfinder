@@ -36,3 +36,25 @@ export default async function POST(
 
     return NextResponse.json(user);
 }
+
+export async function DELETE(
+    request: Request,
+    {params}: { params: IPrarams }
+){
+    const currentUser = await getCurrentUser();
+    if(!currentUser){
+        return NextResponse.error();
+    }
+
+    const {listingId} = params;
+
+    if(!listingId || typeof listingId != 'string'){
+        throw new Error('Invalid ID');
+    }
+
+    let favoriteIds = [...(currentUser.favoriteIds || [])];
+
+    favoriteIds = favoriteIds.filter((id) => id != listingId);
+
+   
+}
