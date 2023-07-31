@@ -56,5 +56,14 @@ export async function DELETE(
 
     favoriteIds = favoriteIds.filter((id) => id != listingId);
 
-   
+   const user = await prisma.user.update({
+    where:{
+        id: currentUser.id
+    },
+    data:{
+        favoriteIds
+    }
+   });
+
+   return NextResponse.json(user);
 }
